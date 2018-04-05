@@ -27,7 +27,6 @@ var abi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","typ
 var contractAddress = "0xaFBeC4D65BC7b116d85107FD05d912491029Bf46"; 
 var contract =  web3.eth.contract(abi).at(contractAddress);
 
-
 var createAccount = express.Router();
 createAccount.get('/', function(request, response){
     // Enter your infura key
@@ -37,6 +36,17 @@ createAccount.get('/', function(request, response){
     response.end(JSON.stringify(account.create()));
 });
 app.use('/create', createAccount);
+
+
+var getBalance = express.Router();
+getBalance.post('/', function(request , response){
+
+    var toAddress = request.body.toAddress;
+    response.contentType('application/json');
+    response.end(JSON.stringify(contract.balanceOf(toAddress)));
+
+});
+app.use('/balance', getBalance);
 
 
 var sendToken = express.Router();
@@ -83,11 +93,13 @@ sendToken.post('/', async function(request, response){
 });
 app.use('/transferToken', sendToken);
 
+
 app.get('/', function(request, response){
     
     response.contentType('application/json');
     response.end(JSON.stringify("Node is running"));
 });
+
 
 if (module === require.main) {
     // Start the server
