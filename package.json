@@ -20,9 +20,5 @@
     "url": ""
   },
   "author": "Junaid Mushtaq",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Govind13100/abcdef/issues"
-  },
-  "homepage": "https://github.com/Govind13100/abcdef#readme"
+  "license": "MIT"
 }
