@@ -11,7 +11,7 @@ app.use(bodyParser.json({type: 'application/json'}));
 web3.setProvider(new web3.providers.HttpProvider("https://mainnet.infura.io/'Add your Infura Key'"));
 
 var abi = "Add contract ABI without quotes";
-var contractAddress = "Add vontract address"; 
+var contractAddress = "Add contract address"; 
 var contract =  web3.eth.contract(abi).at(contractAddress);
 
 //------- Create Account ---------
